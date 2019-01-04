@@ -7,6 +7,7 @@
 
 
 class CsdnPipeline(object):
+    # 必须有一个这样命名的函数
     def process_item(self, item, spider):
         print(item['title'])
         print(item['time'])

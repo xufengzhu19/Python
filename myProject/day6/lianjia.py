@@ -47,7 +47,7 @@ class LianJiaSpider:
             url = self.baseurl + str(pg) + '/'
             self.getPage(url)
             time.sleep(1)
-            print("第%d页爬取成功" % pg)
+            print("第%d页爬取成功 " % pg)
 
 
 if __name__ == '__main__':
