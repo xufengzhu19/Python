@@ -7,6 +7,8 @@
 
 from scrapy import signals
 
+from MiddleWare.proxys import PROXY
+
 
 class MiddlewareSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -54,3 +56,20 @@ class MiddlewareSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+import random
+from MiddleWare.useragents import *
+
+
+class RandomUA(object):
+    def process_request(self, request, spider):
+        useragent = random.choice(UA)
+        request.headers['User-Agent'] = useragent
+        print(useragent)
+
+class RandomProxy(object):
+    def process_request(self,request,spider):
+        proxy=random.choice(PROXY)
+        request.meta['proxy']=proxy
+        print(proxy)
